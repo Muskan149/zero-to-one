@@ -1,4 +1,4 @@
-import { useRouter, NextRouter } from 'next/router';
+// import { useRouter, NextRouter } from 'next/router';
 import { getUserId, supabase } from '@/utils/supabase/supabaseClient';
 import { generateRoadmap } from '@/utils/gemini-llm/roadmapGenerator'; 
 import { uploadRoadmapToSupabase } from '@/utils/supabase/uploadRoadmap';
@@ -7,7 +7,7 @@ import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.share
 export async function handleRoadmapGeneration({ router, ideaId }: { router: AppRouterInstance, ideaId: string }) {
     try {
     // First, retrieve the project idea from Supabase
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from('project_ideas')
         .select('*')
         .eq('id', ideaId)
@@ -22,8 +22,17 @@ export async function handleRoadmapGeneration({ router, ideaId }: { router: AppR
         throw new Error('User not logged in or userId is null');
     }
 
-    console.log("roadmapSteps before upload:", roadmapResponse.data);
-
+    console.log("roadmapSteps before upload:", roadmapResponse.data)
+    
+    // Retreieve the roadmap steps from the response
+    // const steps = roadmapResponse.data 
+    //   .map((step: any) => ({
+    //       heading: step.heading,
+    //       description: step.description,
+    //       estimated_duration: step.estimated_duration,
+    //       resources: step.resources,
+    //   }));
+    
     // Third, upload the generated roadmap to supabase
     const uploadResponse = await uploadRoadmapToSupabase(userId, ideaId, data.title, data.description, roadmapResponse.data);
 
@@ -34,5 +43,5 @@ export async function handleRoadmapGeneration({ router, ideaId }: { router: AppR
     }
   } catch (error) {
     console.log('Error fetching project idea:', error);
-    }
+  }
 }

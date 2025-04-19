@@ -3,7 +3,6 @@
 import type { ProjectFormData } from '@/lib/types';
 import { uploadUserPreferences } from "../../utils/supabase/uploadUserPreferences";
 import { generateIdeas } from '@/utils/gemini-llm/ideaGenerator';
-import { getUserId } from '@/utils/supabase/supabaseClient';
 import { uploadIdeas } from '../../utils/supabase/uploadIdeas';
 
 type SetStateFunction<T> = React.Dispatch<React.SetStateAction<T>>;
@@ -21,7 +20,7 @@ export const handleFormSubmit = (
     
     try {
 
-      const userId = "1fffad0a-4294-4d10-b1fb-4e42e300d0e9"; 
+      // const userId = "1fffad0a-4294-4d10-b1fb-4e42e300d0e9"; 
 
       // First, save preferences to Supabase
       const response = await uploadUserPreferences(formData);

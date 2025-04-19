@@ -1,4 +1,4 @@
-import { RawRoadmapItem, Roadmap, RoadmapItem } from '@/lib/types';
+import { RawRoadmapItem, Roadmap } from '@/lib/types';
 import { supabase } from '@/utils/supabase/supabaseClient'; 
 
 export async function retrieveRoadmapAndSteps(roadmapId: string) {
@@ -17,9 +17,7 @@ export async function retrieveRoadmapAndSteps(roadmapId: string) {
     )
     `)
     .eq('id', roadmapId)
-    .single(); // because we expect 1 roadmap per idea
-    // .single(); // because we expect 1 roadmap per idea
-    
+    .single(); // because we expect 1 roadmap per idea    
 
   if (error) {
     console.error('Error retrieving roadmap:', error.message);

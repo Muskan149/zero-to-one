@@ -1,6 +1,8 @@
 // supabaseClient.js
-require('dotenv').config({ path: '.env.local' });
-const { createClient } = require('@supabase/supabase-js');
+import dotenv from 'dotenv';
+dotenv.config({ path: '.env.local' });
+import { createClient } from '@supabase/supabase-js';
+
 
 // Initialize Supabase client 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://yvijepeavdbltwhaognp.supabase.co';
@@ -9,7 +11,7 @@ console.log(`Supabase URL: ${supabaseUrl}`);
 console.log(`Supabase Key: ${supabaseKey}`);
 
 // Create a single instance of the Supabase client
-const supabase = createClient(supabaseUrl, supabaseKey);
+export const supabase = createClient(supabaseUrl, supabaseKey);
 
 /**
  * Signs up a new user with email and password
@@ -17,7 +19,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
  * @param {string} password - User's password
  * @returns {Promise<{user: object|null, session: object|null, error: Error|null}>}
  */
-const signUp = async (email, password) => {
+export const signUp = async (email, password) => {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -36,7 +38,7 @@ const signUp = async (email, password) => {
  * @param {string} password - User's password
  * @returns {Promise<{user: object|null, session: object|null, error: Error|null}>}
  */
-const signIn = async (email, password) => {
+export const signIn = async (email, password) => {
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
@@ -53,7 +55,7 @@ const signIn = async (email, password) => {
  * Signs out the current user
  * @returns {Promise<{error: Error|null}>}
  */
-const signOut = async () => {
+export const signOut = async () => {
   const { error } = await supabase.auth.signOut();
   return { error };
 };
@@ -62,7 +64,7 @@ const signOut = async () => {
  * Gets the current user from the session
  * @returns {Promise<{user: object|null}>}
  */
-const getCurrentUser = async () => {
+export const getCurrentUser = async () => {
   const { data: { user } } = await supabase.auth.getUser();
   return { user };
 };
@@ -71,7 +73,7 @@ const getCurrentUser = async () => {
  * Gets the current user ID from the session
  * @returns {Promise<string|null>} The user ID or null if not authenticated
  */
-const getUserId = async () => {
+export const getUserId = async () => {
   const { user } = await getCurrentUser();
   return user?.id || null;
 };
@@ -79,7 +81,7 @@ const getUserId = async () => {
 /**
  * Clears the user ID from localStorage (useful for logout)
  */
-const clearUserId = () => {
+export const clearUserId = () => {
   if (typeof window !== 'undefined') {
     localStorage.removeItem('temp_user_id');
   }
@@ -93,4 +95,4 @@ const clearUserId = () => {
 //   return { user, session, error };
 // }
 
-module.exports = { supabase, signUp, signIn, signOut, getCurrentUser, getUserId, clearUserId };
+// module.exports = { supabase, signUp, signIn, signOut, getCurrentUser, getUserId, clearUserId };

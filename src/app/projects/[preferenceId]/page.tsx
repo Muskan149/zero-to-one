@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from 'react';
 import { ProjectCard } from '@/components/projects/project-card';
-import { ProjectIdea } from '@/lib/types';
+import { ProjectIdea, RawProjectIdea } from '@/lib/types';
 import { retrieveIdeas } from '@/utils/supabase/retrieveIdeas';
 import { useParams } from 'next/navigation';
 
@@ -14,12 +14,12 @@ export default function ProjectIdeasPage() {
 
   useEffect(() => {
     const fetchIdeas = async () => {
-      try {
+    try {
         const ideas = await retrieveIdeas(preferenceId as string); // raw snake_case from Supabase
         console.log("Raw Supabase ideas:", ideas);
 
         // ✅ format them right here
-        const formattedIdeas: ProjectIdea[] = ideas.map((idea: any, index: number) => ({
+        const formattedIdeas: ProjectIdea[] = ideas.map((idea: RawProjectIdea, index: number) => ({
           id: idea.id || index.toString(),
           title: idea.title,
           description: idea.description,

@@ -1,12 +1,22 @@
 // src/lib/types.ts
 export type DifficultyLevel = 'Beginner' | 'Intermediate' | 'Advanced';
 
+export type RawProjectIdea = {
+  id?: string;
+  title: string;
+  description: string;
+  tech_stack?: string[];
+  complexity_level: string;
+  estimated_duration: string;
+};
+
+
 export interface ProjectIdea {
   id: string;
   title: string;
   description: string;
   techStack: string[];
-  complexityLevel: DifficultyLevel;
+  complexityLevel: string;
   estimatedDuration: string;
 }
 

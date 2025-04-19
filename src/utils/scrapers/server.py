@@ -21,10 +21,38 @@ def search_articles():
         return jsonify(results)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+@app.route("/api/postArticles", methods=["POST"])
+def post_articles():
+    data = request.get_json()
+    query = data.get("query")
+
+    if not query:
+        return jsonify({"error": "Query is required"}), 400
+
+    try:
+        results = get_web_articles(query)
+        return jsonify(results)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @app.route("/api/getYoutubeLinks", methods=["GET"])
 def search_videos():
     query = request.args.get("query")  # <-- same fix here
+    if not query:
+        return jsonify({"error": "Query is required"}), 400
+
+    try:
+        results = get_youtube_links(query)
+        return jsonify(results)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/api/postVideos", methods=["POST"])
+def post_videos():
+    data = request.get_json()
+    query = data.get("query")
+
     if not query:
         return jsonify({"error": "Query is required"}), 400
 

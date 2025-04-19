@@ -1,8 +1,8 @@
 // Import necessary Supabase client
 import { ProjectFormData } from '@/lib/types';
-import { createClient } from '@supabase/supabase-js';
-import { v4 as uuidv4 } from 'uuid'; // For generating temporary user IDs
-import { getUserId, supabase, getCurrentUser }  from '@/utils/supabase/supabaseClient'; // Adjust the import based on your project structure
+// import { createClient } from '@supabase/supabase-js';
+// import { v4 as uuidv4 } from 'uuid'; // For generating temporary user IDs
+import { supabase }  from '@/utils/supabase/supabaseClient'; // Adjust the import based on your project structure
 
 // This function would go in your formSubmission.ts file to replace or extend the existing uploadToSupabase function
 export async function uploadUserPreferences(formData: ProjectFormData) {

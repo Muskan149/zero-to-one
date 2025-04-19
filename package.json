@@ -34,6 +34,10 @@
     "tw-animate-css": "^1.2.4",
     "uuid": "^11.1.0"
   },
+  "resolutions": {
+    "react": "^18.2.0",
+    "@types/react": "^18.2.0"
+  },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@shadcn/ui": "^0.0.4",

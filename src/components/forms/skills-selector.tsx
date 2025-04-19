@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Search } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { 
@@ -23,7 +22,6 @@ interface SkillsSelectorProps {
 const SkillsSelector =({ 
   skills = [], 
   onChange,
-  className
   }: SkillsSelectorProps) => {
 
   // State management

@@ -1,8 +1,9 @@
 import { supabase } from '@/utils/supabase/supabaseClient';
 import { getUserId } from '@/utils/supabase/supabaseClient';
+import type { RawProjectIdea } from '@/lib/types';
 
 export async function uploadIdeas (
-  ideas: any[], // Array of ideas from ideaGenerator
+  ideas: RawProjectIdea[], // Array of ideas from ideaGenerator
   preferenceId: string
 ) {
   const userId = await getUserId();

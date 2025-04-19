@@ -2,11 +2,10 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
 export function Navigation() {
-  const pathname = usePathname();
+  // const pathname = usePathname();
 
   return (
     <nav className="flex items-center space-x-6">

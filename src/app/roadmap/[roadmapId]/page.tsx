@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { RoadmapItem } from '@/components/roadmap/roadmap-item';
-import type { Roadmap, RoadmapItem as RoadmapItemType } from '@/lib/types';
+import type { Roadmap} from '@/lib/types';
 import { retrieveRoadmapAndSteps } from '@/utils/supabase/retrieveRoadmap';
 
 export default function RoadmapPage() {
@@ -100,7 +100,7 @@ export default function RoadmapPage() {
       <div className="mt-8 border-t pt-6">
         <h3 className="text-lg font-semibold mb-4">Need Help?</h3>
         <p className="text-gray-600 mb-4">
-          If you're stuck or need guidance with this project, consider reaching out to the community:
+          If you&apos;re stuck or need guidance with this project, consider reaching out to the community:
         </p>
         <div className="flex gap-3">
           <Button variant="outline">Join Discord</Button>

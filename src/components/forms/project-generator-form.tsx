@@ -22,7 +22,7 @@ export function ProjectGeneratorForm() {
   });
 
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [, setError] = useState<string | null>(null);
 
   const domainOptions = [
     'Full Stack Development', 
