@@ -1,0 +1,32 @@
+[
+    {
+        "title": "How to Get a Google Maps API Key in 2 Mins",
+        "channel": "Steve Builds Websites",
+        "published": "2023-12-01T15:00:45Z",
+        "link": "https://www.youtube.com/watch?v=hsNlz7-abd0"
+    },
+    {
+        "title": "the MOST precise location API",
+        "channel": "Code with Ania Kub\u00f3w",
+        "published": "2023-10-23T14:00:42Z",
+        "link": "https://www.youtube.com/watch?v=y7Uw-SDtgAY"
+    },
+    {
+        "title": "The Geolocation API Simplified",
+        "channel": "John Komarnicki",
+        "published": "2022-05-04T13:00:01Z",
+        "link": "https://www.youtube.com/watch?v=KIQShH4b_oQ"
+    },
+    {
+        "title": "How To Create Google Maps API KEY  ( Easy Steps By Steps Instructions) 4K",
+        "channel": "themesCode",
+        "published": "2020-09-23T13:12:44Z",
+        "link": "https://www.youtube.com/watch?v=OGTG1l7yin4"
+    },
+    {
+        "title": "How to Get Google Maps API Key for FREE (Step-by-Step Instructions 2024)",
+        "channel": "The Debug Arena",
+        "published": "2024-06-04T08:24:45Z",
+        "link": "https://www.youtube.com/watch?v=7LcYpdxAXRA"
+    }
+]

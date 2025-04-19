@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Python Machine Learning Tutorial (Data Science)",
+        "channel": "Programming with Mosh",
+        "published": "2020-09-17T13:00:03Z",
+        "url": "https://www.youtube.com/watch?v=7eh4d6sabA0"
+    },
+    {
+        "title": "The Complete Machine Learning Roadmap",
+        "channel": "Programming with Mosh",
+        "published": "2024-07-18T13:00:06Z",
+        "url": "https://www.youtube.com/watch?v=7IgVGSaQPaw"
+    },
+    {
+        "title": "Machine Learning | What Is Machine Learning? | Introduction To Machine Learning | 2024 | Simplilearn",
+        "channel": "Simplilearn",
+        "published": "2018-09-19T14:57:02Z",
+        "url": "https://www.youtube.com/watch?v=ukzFI9rgwfU"
+    },
+    {
+        "title": "Machine Learning Explained in 100 Seconds",
+        "channel": "Fireship",
+        "published": "2021-09-09T17:31:56Z",
+        "url": "https://www.youtube.com/watch?v=PeMlggyqz0Y"
+    },
+    {
+        "title": "Machine Learning Tutorial | Machine Learning Basics | Machine Learning Algorithms | Simplilearn",
+        "channel": "Simplilearn",
+        "published": "2018-02-13T15:31:39Z",
+        "url": "https://www.youtube.com/watch?v=G7fPB4OHkys"
+    }
+]

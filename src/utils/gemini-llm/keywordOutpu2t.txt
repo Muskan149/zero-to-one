@@ -1,0 +1,50 @@
+{
+  "success": true,
+  "data": {
+    "1": [
+      "nextjs typescript setup tutorial",
+      "ticketmaster api key get started",
+      "geolocation api free beginner"
+    ],
+    "2": [
+      "database schema design event app",
+      "mongodb vs postgresql beginner",
+      "prisma setup tutorial"
+    ],
+    "3": [
+      "nodejs express fetch api data",
+      "nodejs scheduled jobs tutorial",
+      "event driven architecture beginner"
+    ],
+    "4": [
+      "nodejs geolocation api address to coordinates",
+      "api caching nodejs beginner",
+      "geolocation api integration tutorial"
+    ],
+    "5": [
+      "nextauth js tutorial beginner",
+      "passport js authentication tutorial",
+      "secure user preferences database"
+    ],
+    "6": [
+      "recommendation engine algorithm beginner",
+      "content based filtering tutorial",
+      "collaborative filtering explained simple"
+    ],
+    "7": [
+      "nextjs display event list component",
+      "leaflet map tutorial beginner",
+      "responsive design nextjs tutorial"
+    ],
+    "8": [
+      "nextjs user profile page tutorial",
+      "fetch data from api nextjs frontend",
+      "display personalized data frontend"
+    ],
+    "9": [
+      "jest unit testing nextjs tutorial",
+      "cypress integration testing beginner",
+      "vercel deploy nextjs app"
+    ]
+  }
+}

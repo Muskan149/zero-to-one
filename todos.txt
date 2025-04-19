@@ -1,0 +1,4 @@
+- rendering the roadmap on the screen ✅ 
+- improve the algo for web links 
+- render the web links on the screen 
+- improve the generator llm for json 
