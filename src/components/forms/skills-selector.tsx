@@ -60,9 +60,7 @@ const SkillsSelector =({
 
   
   return (
-    <div className="space-y-1.5">
-      <h2 className="text-medium font-semibold">Preferred skills/tech stack:</h2>
-      
+    <div className="space-y-1.5">      
       <Command className="rounded-lg border shadow-md">
         <CommandInput
             value = {skillInput}

@@ -34,3 +34,25 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Python Environment Setup
+
+This project uses Python for some backend functionality. To set up the Python environment:
+
+1. Make sure you have Python 3.x installed on your system
+2. Run the following commands in your terminal:
+
+```bash
+# Make the setup script executable
+chmod +x setup-python-env.sh
+
+# Run the setup script
+./setup-python-env.sh
+```
+
+This will:
+- Create a Python virtual environment
+- Install all required Python dependencies
+- Set up your environment for running the Python components
+
+Note: You only need to run these commands once when first setting up the project.

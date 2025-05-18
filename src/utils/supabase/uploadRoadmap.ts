@@ -1,16 +1,12 @@
 import { supabase } from '@/utils/supabase/supabaseClient';
-
-interface RoadmapStepInput {
-  heading: string;
-  description: string;
-}
+import { RoadmapStep } from '@/lib/types';
 
 export async function uploadRoadmapToSupabase(
   userId: string,
   ideaId: string,
   projectTitle: string,
   projectDescription: string,
-  roadmapSteps: RoadmapStepInput[]
+  roadmapSteps: RoadmapStep[],
 ) {
   try {
     // Step 1: Insert into 'roadmaps' table
@@ -39,6 +35,8 @@ export async function uploadRoadmapToSupabase(
       step_order: index + 1,
       heading: step.heading,
       description: step.description,
+      articles: step.articles,
+      videos: step.videos,
     }));
 
     // Step 3: Insert steps into 'roadmap_step' table
@@ -51,9 +49,11 @@ export async function uploadRoadmapToSupabase(
     }
 
     console.log('Roadmap and steps uploaded successfully!');
+    
+    // Step 4: Return the roadmap ID for further use (e.g., redirecting)
     return roadmapId;
   } catch (err) {
-    console.error('Upload failed:', err);
-    throw err;
+      console.error('Upload failed:', err);
+      throw err;
   }
 }

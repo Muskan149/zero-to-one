@@ -2,49 +2,49 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ProjectCard } from '@/components/projects/project-card';
-import { ProjectIdea, RawProjectIdea } from '@/lib/types';
-import { retrieveIdeas } from '@/utils/supabase/retrieveIdeas';
+import { IdeaCard } from '@/components/projects/idea-card';
+import { ProjectIdea, SupabaseProjectIdea } from '@/lib/types';
+import { fetchIdeasWithId } from '@/utils/supabase/fetchIdeas';
 import { useParams } from 'next/navigation';
 
 export default function ProjectIdeasPage() {
   const { preferenceId } = useParams();
   const [projectIdeas, setProjectIdeas] = useState<ProjectIdea[]>([]); // Replace `any` with a proper type later
-  const [loading, setLoading] = useState(true);
+  const [generatingProjectId, setGeneratingProjectId] = useState<string | null>(null);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   useEffect(() => {
     const fetchIdeas = async () => {
-    try {
-        const ideas = await retrieveIdeas(preferenceId as string); // raw snake_case from Supabase
-        console.log("Raw Supabase ideas:", ideas);
+      try {
+        const ideas = await fetchIdeasWithId(preferenceId as string);
+        console.log("Fetched ideas from Supabase:", ideas);
 
-        // ✅ format them right here
-        const formattedIdeas: ProjectIdea[] = ideas.map((idea: RawProjectIdea, index: number) => ({
+        const formattedIdeas: ProjectIdea[] = ideas.map((idea: SupabaseProjectIdea, index: number) => ({
           id: idea.id || index.toString(),
           title: idea.title,
           description: idea.description,
           techStack: idea.tech_stack || [],
           complexityLevel: idea.complexity_level,
-          estimatedDuration: idea.estimated_duration
+          estimatedDuration: idea.estimated_duration,
+          isSaved: idea.is_saved || false
         }));
 
         console.log("Formatted project ideas:", formattedIdeas);
         setProjectIdeas(formattedIdeas);
       } catch (error) {
         console.error('Failed to fetch project ideas:', error);
-      } finally {
-        setLoading(false);
-      }
+      } 
     };
 
     if (preferenceId) {
       fetchIdeas();
     }
   }, [preferenceId]);
+
+  useEffect(() => {
+    // console.log("Is Something being generated?", isGenerating ? "Yes" : "No");
+  }, [generatingProjectId]);
   
-  if (loading) {
-    return <div className="text-center">Loading...</div>;
-  }
   return (
     <div className="max-w-6xl mx-auto">
       {/* <h1 className="text-3xl font-bold text-purple-600 mb-6">Project Ideas</h1> */}
@@ -53,9 +53,24 @@ export default function ProjectIdeasPage() {
       </p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {projectIdeas.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
+        {projectIdeas.map((project) => {
+          const isThisCardGenerating = generatingProjectId === project.id;
+          return (
+            <IdeaCard 
+              key={project.id} 
+              project={project} 
+              isGenerating={isThisCardGenerating || isGenerating}
+              onGenerateStart={() => {
+                setGeneratingProjectId(project.id);
+                setIsGenerating(true);
+              }}
+              onGenerateEnd={() => {
+                setGeneratingProjectId(null);
+                setIsGenerating(false);
+              }}
+            />
+          );
+        })}
       </div>
     </div>
   );

@@ -1,12 +1,16 @@
 import { supabase } from '@/utils/supabase/supabaseClient';
 import { getUserId } from '@/utils/supabase/supabaseClient';
-import type { RawProjectIdea } from '@/lib/types';
+import type { SupabaseProjectIdea } from '@/lib/types';
 
-export async function uploadIdeas (
-  ideas: RawProjectIdea[], // Array of ideas from ideaGenerator
+export async function uploadIdeasToSupabase (
+  ideas: SupabaseProjectIdea[], // Array of ideas from ideaGenerator
   preferenceId: string
 ) {
-  const userId = await getUserId();
+  // Get the user ID from the context or auth state
+const userId = await getUserId(); // This should be a function that retrieves the user ID from your auth context or Supabase session
+
+  console.log("User ID:", userId);
+
 
   if (!userId) {
     console.error('Invalid user ID');
@@ -14,6 +18,7 @@ export async function uploadIdeas (
   }
 
   if (!Array.isArray(ideas)) {
+    console.error('Ideas must be an array', ideas);
     throw new Error('Ideas must be an array');
   }
 

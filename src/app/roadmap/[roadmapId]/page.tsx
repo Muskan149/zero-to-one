@@ -6,25 +6,27 @@ import { useParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { RoadmapItem } from '@/components/roadmap/roadmap-item';
 import type { Roadmap} from '@/lib/types';
-import { retrieveRoadmapAndSteps } from '@/utils/supabase/retrieveRoadmap';
+import { fetchRoadmap } from '@/utils/supabase/fetchRoadmap';
 
 export default function RoadmapPage() {
 
   // First retrieve roadmapId
   const params = useParams();
   const roadmapId = params.roadmapId as string;
-  console.log(`here is the projectId: ${roadmapId}`)
+  console.log(`here is the roadmap id: ${roadmapId}`)
 
   const [roadmap, setRoadmap] = useState<Roadmap | null>(null);
   const [loading, setLoading] = useState(true);
 
 
   useEffect(() => {
-    const fetchRoadmap = async () => {
+    console.log("use effect in action")
+    const fetchRoadmapOnLoad = async () => {
       try {
-        const roadmapAndSteps = await retrieveRoadmapAndSteps(roadmapId); // raw snake_case from Supabase
+        const roadmapAndSteps = await fetchRoadmap(roadmapId); // raw snake_case from Supabase
         if (roadmapAndSteps) {
           setRoadmap(roadmapAndSteps);
+          console.log("roadmapAndSteps:", roadmapAndSteps)
         }
       } catch (error) {
         console.error('Failed to fetch project ideas:', error);
@@ -32,11 +34,17 @@ export default function RoadmapPage() {
         setLoading(false);
       }
   };
-  
-  fetchRoadmap();
+  console.log("abt to run fetch")
+  fetchRoadmapOnLoad();
+  console.log("finished running fetch")
+
   }, [roadmapId]);
 
-  if (loading || !roadmap) {
+  if (!roadmap) {
+    return <p className="text-center mt-8 text-gray-500">No roadmap found.</p>;
+  }
+
+  if (loading) {
     return <p className="text-center mt-8 text-gray-500">Loading roadmap...</p>;
   }
 
@@ -80,7 +88,7 @@ export default function RoadmapPage() {
         <h3 className="text-xl font-semibold text-gray-800">Roadmap Steps</h3>
         <Button 
           variant="outline" 
-          className="text-purple-600 border-purple-200"
+          className="text-purple-600 border-purple-200 hover:bg-purple-100 hover:text-purple-600"
           onClick={() => window.print()}
         >
           Download Roadmap
@@ -104,7 +112,7 @@ export default function RoadmapPage() {
         </p>
         <div className="flex gap-3">
           <Button variant="outline">Join Discord</Button>
-          <Button variant="outline">Find a Mentor</Button>
+          <Button variant="outline">Contact Us</Button>
         </div>
       </div>
     </div>

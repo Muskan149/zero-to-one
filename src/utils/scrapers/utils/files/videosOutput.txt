@@ -1,0 +1,32 @@
+[
+    {
+        "title": "How To Structure A Programming Project\u2026",
+        "channel": "Tech With Tim",
+        "published": "2023-09-12T15:04:50Z",
+        "url": "https://www.youtube.com/watch?v=CAeWjoP525M"
+    },
+    {
+        "title": "How to Structure Programming Projects for Beginners | Python Long-term Project Structuring",
+        "channel": "lemonade in tech",
+        "published": "2021-10-25T11:30:03Z",
+        "url": "https://www.youtube.com/watch?v=3gf60ncxe28"
+    },
+    {
+        "title": "IntelliJ IDEA Beginner Tutorial | Project Structure",
+        "channel": "Automation Step by Step",
+        "published": "2021-08-20T13:00:18Z",
+        "url": "https://www.youtube.com/watch?v=LJdj3GZngT8"
+    },
+    {
+        "title": "Mastering React Setup &amp; Project Structure | Complete Guide",
+        "channel": "Programming Stuff",
+        "published": "2024-07-08T13:30:12Z",
+        "url": "https://www.youtube.com/watch?v=HaqSgCZtlgs"
+    },
+    {
+        "title": "Node.js Project Structure and Architecture Best Practices",
+        "channel": "Software Developer Diaries",
+        "published": "2023-09-10T14:35:06Z",
+        "url": "https://www.youtube.com/watch?v=fc6o1gwqZuA"
+    }
+]

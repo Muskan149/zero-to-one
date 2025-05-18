@@ -7,8 +7,8 @@ import { createClient } from '@supabase/supabase-js';
 // Initialize Supabase client 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://yvijepeavdbltwhaognp.supabase.co';
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl2aWplcGVhdmRibHR3aGFvZ25wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MzU2MDUsImV4cCI6MjA1ODExMTYwNX0.3eHc5SjYU_rn7iQ9uN2qAaYSf_dMj3C467AsJXEt_9o';
-console.log(`Supabase URL: ${supabaseUrl}`);
-console.log(`Supabase Key: ${supabaseKey}`);
+// console.log(`Supabase URL: ${supabaseUrl}`);
+// console.log(`Supabase Key: ${supabaseKey}`);
 
 // Create a single instance of the Supabase client
 export const supabase = createClient(supabaseUrl, supabaseKey);
@@ -19,16 +19,42 @@ export const supabase = createClient(supabaseUrl, supabaseKey);
  * @param {string} password - User's password
  * @returns {Promise<{user: object|null, session: object|null, error: Error|null}>}
  */
-export const signUp = async (email, password) => {
+export const signUp = async (email, password, fullName) => {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
   });
+
+  if (error) {
+    console.error(error.message)
+    return {error};
+  }
+
+  // If user creation is successful and we have a user ID
+  if (data.user) {
+    console.log('User created:', data.user);
+    const { id, email: userEmail } = data.user;
+
+    const { error: insertError } = await supabase
+      .from('profiles')
+      .insert({
+        id,
+        name: fullName,
+        email: userEmail,
+      });
+
+    if (insertError) {
+      console.error('Error inserting user profile:', insertError.message);
+      return { error: insertError };
+    }
+  } else {
+    console.error('User sign up failed:', error.message);
+    return { error };
+  }
   
   return { 
     user: data?.user || null, 
     session: data?.session || null, 
-    error 
   };
 };
 
@@ -42,6 +68,7 @@ export const signIn = async (email, password) => {
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
+    redirectTo: 'http://localhost:3000/generate',
   });
   
   return { 
@@ -94,5 +121,3 @@ export const clearUserId = () => {
 //   console.log("Error:", error)
 //   return { user, session, error };
 // }
-
-// module.exports = { supabase, signUp, signIn, signOut, getCurrentUser, getUserId, clearUserId };

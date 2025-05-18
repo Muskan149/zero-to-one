@@ -1,9 +1,9 @@
 // src/lib/formHandlers.ts
 // import { AppRouterInstance } from 'next/navigation';
 import type { ProjectFormData } from '@/lib/types';
-import { uploadUserPreferences } from "../../utils/supabase/uploadUserPreferences";
-import { generateIdeas } from '@/utils/gemini-llm/ideaGenerator';
-import { uploadIdeas } from '../../utils/supabase/uploadIdeas';
+import { uploadUserPreferences } from "@/utils/supabase/uploadUserPreferences";
+import { generateIdeas } from '@/utils/llm/generateIdeas';
+import { uploadIdeasToSupabase } from '@/utils/supabase/uploadIdeas';
 
 type SetStateFunction<T> = React.Dispatch<React.SetStateAction<T>>;
 
@@ -19,9 +19,6 @@ export const handleFormSubmit = (
     setError(null);
     
     try {
-
-      // const userId = "1fffad0a-4294-4d10-b1fb-4e42e300d0e9"; 
-
       // First, save preferences to Supabase
       const response = await uploadUserPreferences(formData);
       const data = response.data
@@ -32,10 +29,13 @@ export const handleFormSubmit = (
       // Next, generate ideas using the ideaGenerator function
       try {
         const ideas = await generateIdeas(data.domain, data.non_tech_interest, data.skills, data.project_complexity, data.roadmap_granularity)
+        if (!ideas || !ideas.data) {
+          throw new Error("No ideas generated");
+        }
         console.log("Generated project ideas:", ideas.data);
 
         // Next, upload ideas using uploadIdeas
-        const ideaUploadResponse = await uploadIdeas(ideas.data, preferenceId)
+        const ideaUploadResponse = await uploadIdeasToSupabase(ideas.data, preferenceId)
         const uploadedIdeas = ideaUploadResponse.data
       
         console.log("Uploaded project ideas to Supabase:", uploadedIdeas);
