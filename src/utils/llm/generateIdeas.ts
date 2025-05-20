@@ -51,5 +51,10 @@ export async function generateIdeas(domain: string, nonTechInterests: string, sk
     return parseJSONData(responseText, false)
   } catch (error: any) {
     console.error("Error generating ideas:", error);
+    return {
+      success: false,
+      data: null,
+      error: error.message || "Failed to generate ideas"
+    };
   }
 }
