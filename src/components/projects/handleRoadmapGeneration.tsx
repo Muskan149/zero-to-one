@@ -38,7 +38,7 @@ export async function handleRoadmapGeneration({ router, ideaId }: { router: AppR
 
         // Generate links for the roadmap
         console.log("Generating links for the roadmap");
-        const roadmapWithLinks = await generateLinksForRoadmap(roadmapData);
+        const roadmapWithLinks = await generateLinksForRoadmap(roadmapData, true, false);   
         
         if (!roadmapWithLinks || roadmapWithLinks.length == 0) {
             throw new Error('Failed to generate or no links were found for the roadmap', { cause: roadmap.error });

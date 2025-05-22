@@ -1,7 +1,8 @@
 export const fetchArticles = async (query: string) => {
   try {
     // const link = "https://zero-to-one-backend-203a1e496967.herokuapp.com/api/postArticles";
-    const link = "http://localhost:8000/api/postArticles";
+    const link = "https://clb2itnx4d.execute-api.us-east-1.amazonaws.com/dev/api/postArticles";
+    // const link = "http://localhost:8000/api/postArticles";
     const response = await fetch(link, {
       method: "POST",
       headers: {
@@ -30,7 +31,9 @@ export const fetchArticles = async (query: string) => {
 
 export const fetchVideos = async (query: string) => {
   // const link = "https://zero-to-one-backend-203a1e496967.herokuapp.com/api/postVideo";
-  const link = "http://localhost:8000/api/postVideos";
+    // const link = "http://localhost:8000/api/postVideos";
+  const link = "https://clb2itnx4d.execute-api.us-east-1.amazonaws.com/dev/api/postVideos";
+
   try {
     const response = await fetch(link, {
       method: "POST",
