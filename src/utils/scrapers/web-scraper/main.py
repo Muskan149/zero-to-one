@@ -10,6 +10,11 @@ CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000", "http://lo
      methods=["GET", "POST", "OPTIONS"],
      allow_headers=["Content-Type", "Authorization"])
 
+@app.before_request
+def handle_options():
+    if request.method == 'OPTIONS':
+        return '', 200
+
 @app.route("/", methods=["GET"])
 def home():
     return "Flask backend is running!"
