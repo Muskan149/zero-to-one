@@ -5,7 +5,7 @@ from flask_cors import CORS
 import os
 
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000", "http://localhost:3001", "http://10.91.31.159:3000", "https://zero-to-one.vercel.app"]}}, 
+CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000", "http://localhost:3001", "http://10.91.31.159:3000", "https://zero-to-one.vercel.app", "https://zero-to-one-sable.vercel.app"]}}, 
      supports_credentials=True,
      methods=["GET", "POST", "OPTIONS"],
      allow_headers=["Content-Type", "Authorization"])
