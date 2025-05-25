@@ -5,15 +5,20 @@ export type ParsedResult<T> = {
 }
 
 export function parseJSONData(responseText: string, isRoadmap = false): ParsedResult<any> {
-  try {
-    let jsonContent = responseText;
-    
-    const jsonMatch =
-      responseText.match(/```(?:json)?([\s\S]*?)```/) ||
-      responseText.match(/({[\s\S]*})/);
 
-    if (jsonMatch?.[1]) {
-      jsonContent = jsonMatch[1].trim();
+  console.log("Response text:", responseText);
+  
+  try {
+    let jsonContent = responseText.trim();
+
+    // If wrapped in triple backticks (```json ... ```), extract the content
+    if (jsonContent.startsWith("```")) {
+      const match = jsonContent.match(/```(?:json)?\n?([\s\S]*?)\n?```/);
+      if (match?.[1]) {
+        jsonContent = match[1].trim();
+      } else {
+        throw new Error("Failed to extract JSON from markdown code block");
+      }
     }
 
     const parsedData = JSON.parse(jsonContent);
@@ -22,13 +27,13 @@ export function parseJSONData(responseText: string, isRoadmap = false): ParsedRe
       return { success: true, data: parsedData, error: null };
     }
 
-    const ideas = parsedData?.project_ideas
+    const ideas = parsedData?.project_ideas;
 
     if (Array.isArray(ideas)) {
-      return { success: true, data: ideas, error: null};
+      return { success: true, data: ideas, error: null };
     }
 
-    throw new Error("Invalid structure: missing 'project_ideas'");
+    return { success: true, data: parsedData, error: null };
   } catch (err: any) {
     return {
       success: false,

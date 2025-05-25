@@ -31,6 +31,7 @@ const userId = await getUserId(); // This should be a function that retrieves th
     complexity_level: idea.complexity_level || null,
     estimated_duration: idea.estimated_duration || null,
     created_at: new Date().toISOString(),
+    domain: idea.domain,
     is_saved: false,
   }));
 

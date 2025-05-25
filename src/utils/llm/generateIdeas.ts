@@ -18,7 +18,7 @@ export async function generateIdeas(domain: string, nonTechInterests: string, sk
 
   return a list of ideas in a json format with the key project_ideas. don't write anything outside of the json structure. the generated ideas should have the following structure:
   
-  Idea = {'title': string, "description": string, 'tech_stack': Array<string>, 'complexity_level': string, 'roadmap_granularity': ${roadmapGranularity}, 'estimated_duration': string}
+  Idea = {'title': string, "description": string, 'tech_stack': Array<string>, 'complexity_level': string, 'roadmap_granularity': ${roadmapGranularity}, 'estimated_duration': string, 'domain': ${domain}}
 
   The "tech_stack" field must be a **strict JSON array of plain strings**, each representing a valid programming language, framework, or tool. Do NOT use "or" as a separator. Do NOT use parentheses.
 

@@ -9,6 +9,7 @@ export type SupabaseProjectIdea = {
   complexity_level: string;
   estimated_duration: string;
   is_saved?: boolean;
+  domain: string;
 };
 
 

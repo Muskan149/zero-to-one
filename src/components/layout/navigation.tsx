@@ -31,11 +31,12 @@ export function Navigation() {
   };
 
   return (
-    <nav className="flex items-center space-x-6">
+    <nav className="flex items-center space-x-8">
       <Link
         href={isAuthenticated ? "/generate" : "/auth"}
         className={cn(
-          "font-medium text-sm text-gray-600 hover:text-purple-600 transition-colors"
+          "font-medium text-base text-gray-600 hover:text-purple-600 transition-colors" 
+          // text-base helps in changing size of the text
         )}
       >
         Generate Ideas
@@ -45,7 +46,7 @@ export function Navigation() {
         <Link
           href="/profile"
           className={cn(
-            "font-medium text-sm text-gray-600 hover:text-purple-600 transition-colors"
+            "font-medium text-base text-gray-600 hover:text-purple-600 transition-colors"
           )}
         >
           My Projects
@@ -54,7 +55,7 @@ export function Navigation() {
 
       <Button
         variant="ghost"
-        className="text-sm text-gray-600 hover:text-purple-600 transition-colors cursor-pointer"
+        className="text-base text-gray-600 hover:text-purple-600 transition-colors cursor-pointer"
         onClick={isAuthenticated ? handleSignOut : handleSignIn}
       >
         {isAuthenticated ? "Sign Out" : "Sign In"}
