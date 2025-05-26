@@ -2,6 +2,7 @@
 // import { GoogleGenerativeAI } from "@google/generative-ai";
 import { parseJSONData } from "./jsonParser";
 import { getOpenAIClient } from "./openaiClient";
+
 // const generationConfig = {
 //   temperature: 0.95,
 //   topP: 0.95,
@@ -30,7 +31,7 @@ Return the output as a JSON object with the format:
 
 Only return the JSON object — no explanations, no extra text.`;
 
-  // console.log("Prompt for keywordGeneration: ", keywordGenPrompt);
+  console.log("Prompt for keywordGeneration: ", keywordGenPrompt);
 
     const response = await openai.chat.completions.create({
       model: "gpt-4o",

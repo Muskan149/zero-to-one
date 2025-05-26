@@ -21,7 +21,7 @@ export const fetchArticles = async (query: string) => {
       throw new Error(data.error);
     }
     
-    console.log("Fetched articles:", data);
+    console.log("Fetched articles for query:", query, "data:", data);
     return data;
   } catch (error: any) {
     console.error("Error fetching articles:", error);

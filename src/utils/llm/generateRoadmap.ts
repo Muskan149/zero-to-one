@@ -28,19 +28,47 @@ export async function generateRoadmap(domain: string, title: string, description
   try {
     console.log("User request:", userRequest);
 
+    // Model: gpt-4o
+    // const response = openai.responses.create({
+    //   model: "gpt-4o",
+    //   input: [
+    //     {
+    //       role: "user",
+    //       content: userRequest,
+    //     },
+    //   ],
+    //   temperature: 0.75,
+    //   max_output_tokens: 2048,
+    //   top_p: 1,
+    // });
+
     const response = await openai.responses.create({
-      model: "gpt-4o",
+      model: "gpt-4.1",
       input: [
         {
-          role: "user",
-          content: userRequest,
-        },
+          "role": "user",
+          "content": [
+            {
+              "type": "input_text",
+              "text": userRequest
+            }
+
+          ]
+        }
       ],
-      temperature: 0.75,
+      text: {
+        "format": {
+          "type": "text"
+        }
+      },
+      reasoning: {},
+      tools: [],
+      temperature: 1,
       max_output_tokens: 2048,
       top_p: 1,
+      store: true
     });
-    
+    console.log("Response:", response);
     const responseText = response.output_text;
 
     console.log("Response:", response);
