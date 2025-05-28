@@ -25,8 +25,6 @@ export async function generateIdeas(domain: string, nonTechInterests: string, sk
   the complexity_level key should have one of the following values: 'beginner', 'intermediate', 'advanced'.`;
 
   try {
-    console.log("OPENAI_API_KEY:", process.env.OPENAI_API_KEY);
-
     console.log("Sending request to OpenAI GPT-4o...");
 
     const chatCompletion = await openai.chat.completions.create({
@@ -58,3 +56,8 @@ export async function generateIdeas(domain: string, nonTechInterests: string, sk
     };
   }
 }
+
+// Dummy test
+
+const ideas = generateIdeas("full-stack-development", "none", "none", "beginner", "intermediate");
+console.log("generated ideas: ", ideas);

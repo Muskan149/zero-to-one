@@ -1,0 +1,27 @@
+{
+  "1": [
+    "https://code.visualstudio.com/docs/nodejs/nodejs-tutorial",
+    "https://www.youtube.com/watch?v=_LtwT5_zmDs",
+    "https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-beginners-tutorial"
+  ],
+  "2": [
+    "https://docs.github.com/en/get-started/quickstart/create-a-repo",
+    "https://www.w3schools.com/git/git_getstarted.asp",
+    "https://www.youtube.com/watch?v=8JJ101D3knE"
+  ],
+  "3": [
+    "https://nodejs.org/en/docs/guides/folder-structure",
+    "https://www.youtube.com/watch?v=Oe421EPjeBE",
+    "https://dev.to/santypk4/bulletproof-node-js-project-architecture-4epf"
+  ],
+  "4": [
+    "https://nodejs.dev/learn/introduction-to-nodejs",
+    "https://www.youtube.com/watch?v=TlB_eWDSMt4",
+    "https://www.tutorialspoint.com/nodejs/nodejs_first_application.htm"
+  ],
+  "5": [
+    "https://reactjs.org/tutorial/tutorial.html",
+    "https://www.youtube.com/watch?v=w7ejDZ8SWv8",
+    "https://www.w3schools.com/react/react_getstarted.asp"
+  ]
+}
